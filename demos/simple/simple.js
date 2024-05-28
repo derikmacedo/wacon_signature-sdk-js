@@ -2,7 +2,6 @@
  * Copyright (C) 2023 Wacom.
  * Use of this source code is governed by the MIT License that can be found in the LICENSE file.
  */
-
 var mSigObj;
 var mHash;
 
@@ -22,7 +21,7 @@ Module.onRuntimeInitialized = _ => {
 	// if we want to hide the licence we can get the licence from an external server.				
 	// there is a php demo file in /common/licence_proxy.php
     //const promise = mSigObj.setLicenceProxy("url from where to get the licence");
-	const promise = mSigObj.setLicence("key", "secret");
+	const promise = mSigObj.setLicence("560f85be-fe83-4ad1-b61f-9873fd001e17", "l3Ew/FwqS9iew1pmO5sJI5pMwcmA0Ldz5SVcUS26fYjmK8LOvtAV0MYNjXkwaLvf58QiJCVXTpeELlKfB6izMQ==");
 	promise.then(value => {
 	    if (value) {
 	        if (navigator.hid) {				

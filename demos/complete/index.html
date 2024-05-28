@@ -60,7 +60,7 @@
 				// if we want to hide the licence we can get the licence from an external server.				
 				// there is a php demo file in /common/licence_proxy.php
                 //const promise = mSigObj.setLicenceProxy("url from where to get the licence");
-				const promise = mSigObj.setLicence("put your key licence here", "put your secret licence here");
+				const promise = mSigObj.setLicence("560f85be-fe83-4ad1-b61f-9873fd001e17", "l3Ew/FwqS9iew1pmO5sJI5pMwcmA0Ldz5SVcUS26fYjmK8LOvtAV0MYNjXkwaLvf58QiJCVXTpeELlKfB6izMQ==");
 				promise.then(value => {
 				    if (value) {
 					    if (navigator.hid) {				
@@ -179,7 +179,7 @@
 				config.allowZeroPressure = document.getElementById("allowZeroPressure").checked;
 				
 				return config;
-            }			
+            }	
 			
 			function capture(source) {
 			    if (!document.getElementById("shows_as_dialog").checked) {
@@ -218,9 +218,9 @@
 				
 				//in this demo we use https://github.com/keithws/browser-report library for getting 
 				//information about the os.
-				const webBrowserData = browserReportSync();		
-				const osInfo = webBrowserData.os.name + " " + webBrowserData.os.version;
-                const digitizerInfo = webBrowserData.browser.name + " " + webBrowserData.browser.version;
+				//const webBrowserData = browserReportSync();		
+				const osInfo = ""; //webBrowserData.os.name + " " + webBrowserData.os.version;
+                const digitizerInfo = ""; //webBrowserData.browser.name + " " + webBrowserData.browser.version;
                 const nicInfo = "";
 		        const where = "";
 				sigCaptDialog.open(mSigObj, document.getElementById("who").value, document.getElementById("why").value, where, generateExtraData(), Module.KeyType.SHA512, documentHash, osInfo, digitizerInfo, nicInfo);
@@ -230,14 +230,11 @@
 		    async function captureFromSTU() {
 			    sigCaptDialog = null;
 			    const config = generateConfig();
-				
-				if (document.getElementById("encrypt_stu").checked) {				
-				    config.encryption = {
-				        sessionId: window.crypto.getRandomValues(new Uint32Array(1))[0], // 32 bits random value
-				        encryptionHandler: new MyEncryptionHandler(), // only necessary if connecting to STU-300/500/520
-				        encryptionHandler2: new MyEncryptionHandler2(), // only necessary if connection to STU-430/530/540 
-				    };
-				}
+				config.encryption = {
+				    sessionId: window.crypto.getRandomValues(new Uint32Array(1))[0], // 32 bits random value
+				    encryptionHandler: new MyEncryptionHandler(), // only necessary if connecting to STU-300/500/520
+				    encryptionHandler2: new MyEncryptionHandler2(), // only necessary if connection to STU-430/530/540 
+				};
 
                 const stuDeviceStr = localStorage.getItem("stuDevice");
 				let stuDevice;
@@ -273,8 +270,8 @@
 				
 				//in this demo we use https://github.com/keithws/browser-report library for getting 
 				//information about the os.
-				const webBrowserData = browserReportSync();		
-				const osInfo = webBrowserData.os.name + " " + webBrowserData.os.version;
+				//const webBrowserData = browserReportSync();		
+				const osInfo = ""; //webBrowserData.os.name + " " + webBrowserData.os.version;
                 const nicInfo = "";
 		        const where = "";
 				stuCapDialog.open(mSigObj, document.getElementById("who").value, document.getElementById("why").value, where, generateExtraData(), Module.KeyType.SHA512, documentHash, osInfo, nicInfo);								

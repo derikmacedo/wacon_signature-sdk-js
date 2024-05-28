@@ -1,3 +1,4 @@
+
 <?php
 /**
  * Copyright (C) 2023 Wacom.
@@ -48,10 +49,10 @@ return pack('H*', $hex);
 
 $query = "HOST FROM WHERE WE CALL";
 if (substr($_SERVER['HTTP_REFERER'], 0, strlen($query)) !== $query) {
-	echo "unathorized access";
+    echo "unauthorized access";
 } else {
-    $key = "PUT THE KEY HERE";
-    $secret = "PUT THE SECRET HERE";
+    $key = "560f85be-fe83-4ad1-b61f-9873fd001e17";
+    $secret = "l3Ew/FwqS9iew1pmO5sJI5pMwcmA0Ldz5SVcUS26fYjmK8LOvtAV0MYNjXkwaLvf58QiJCVXTpeELlKfB6izMQ==";
     $sign = hash_hmac('sha256', $key, base64_decode($secret), true);
     $sign = urlencode(base64_encode($sign));
     $url = "https://lms-tx.azurewebsites.net/api/Client/".$key."?hashedKey=".$sign;
